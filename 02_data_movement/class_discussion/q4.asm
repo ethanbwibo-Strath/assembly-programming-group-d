@@ -8,13 +8,12 @@ section .text
 
 _start:
 
-    mov bx, array          
+    mov ebx, array          ; ebx = address of array
 
-    mov dl, [bx]
-
-    mov dh, [bx+1]
+    movzx edx, byte [ebx]   ; edx = array[0] (zero-extended)
+    movzx ecx, byte [ebx+1] ; ecx = array[1] (zero-extended)
 
     ; Exit program
-    mov ax, 1
-    xor bx, bx
+    mov eax, 1
+    xor ebx, ebx
     int 0x80
